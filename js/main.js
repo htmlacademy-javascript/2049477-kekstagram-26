@@ -3,8 +3,8 @@ function getRandomInteger(from, before) {
   before = Math.floor(before);
 
   if (before <= from) {
-    return 'Ошибка! Максимальное значение не может' + '\n' +
-            'быть меньше значения минимального числа.';
+    return 'Ошибка! Максимальное значение не может ' +
+           'быть меньше значения минимального числа.';
   }
   return Math.abs(Math.floor(Math.random() * (before - from + 1)) + from);
 }
