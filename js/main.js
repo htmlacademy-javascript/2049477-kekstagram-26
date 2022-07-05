@@ -1,14 +1,14 @@
-function getRandomInteger(from, before) {
-  from = Math.ceil(from);
-  before = Math.floor(before);
+const getRandomInteger = (from, to) => {
+  const lowerNumber = Math.ceil(Math.min(Math.abs(from), Math.abs(to)));
+  const upperNumber = Math.floor(Math.min(Math.abs(from), Math.abs(to)));
 
-  return Math.abs(Math.floor(Math.random() * (before - from + 1)) + from);
-}
+  const result = Math.random() * (upperNumber - lowerNumber + 1) + lowerNumber;
+
+  return Math.floor(result);
+};
 getRandomInteger(1, 100);
 
 
-function checkStringLength(testString, maxLength = 140) {
-
-  return (testString.length <= maxLength);
-}
+const checkStringLength = (testString, maxLength = 140) => testString.length <= maxLength;
 checkStringLength('Строка для проверки');
+
