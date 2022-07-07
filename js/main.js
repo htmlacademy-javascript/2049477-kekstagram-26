@@ -1,34 +1,5 @@
-const checkStringLength = (testString, maxLength = 140) => testString.length <= maxLength;
-checkStringLength('q');
-
-const ID = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
-const URL = [
-  'photos/1.jpg',
-  'photos/2.jpg',
-  'photos/3.jpg',
-  'photos/4.jpg',
-  'photos/5.jpg',
-  'photos/6.jpg',
-  'photos/7.jpg',
-  'photos/8.jpg',
-  'photos/9.jpg',
-  'photos/10.jpg',
-  'photos/11.jpg',
-  'photos/12.jpg',
-  'photos/13.jpg',
-  'photos/14.jpg',
-  'photos/15.jpg',
-  'photos/16.jpg',
-  'photos/17.jpg',
-  'photos/18.jpg',
-  'photos/19.jpg',
-  'photos/20.jpg',
-  'photos/21.jpg',
-  'photos/22.jpg',
-  'photos/23.jpg',
-  'photos/24.jpg',
-  'photos/25.jpg',
-];
+const ID = [...Array(25)].map((item, index) => index + 1);
+const URL = [...Array(25)].map((item, index) => `photos/${index + 1}.jpg`);
 const DESCRIPTIONS = [
   'На море',
   'На пляже',
@@ -97,17 +68,16 @@ const comments = [{
   name: NAMES[getRandomInteger(0, 11)],
 }];
 
-const getArrayFromObjects = (elements) => elements[getRandomInteger(0, elements.length - 1)];
+const pickItem = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 const generatePhotoDescription = () => ({
-  id: getArrayFromObjects(ID),
-  url: getArrayFromObjects(URL),
-  description: getArrayFromObjects(DESCRIPTIONS),
+  id: pickItem(ID),
+  url: pickItem(URL),
+  description: pickItem(DESCRIPTIONS),
   likes: getRandomInteger(15, 200),
   comments,
 });
 
 // eslint-disable-next-line no-unused-vars
 const similarDesctiprions = Array.from({length: SIMILAR_DESCRIPTION_COUNT}, generatePhotoDescription);
-
 
