@@ -1,4 +1,4 @@
-import { getRandomInteger, pickItem } from '/js/util';
+import { getRandomInteger, pickItem } from './util.js';
 
 const ID = [...Array(25)].map((item, index) => index + 1);
 const URL = [...Array(25)].map((item, index) => `photos/${index + 1}.jpg`);
