@@ -1,7 +1,5 @@
 import { getRandomInteger, pickItem } from './util.js';
 
-const ID = [...Array(25)].map((item, index) => index + 1);
-const URL = [...Array(25)].map((item, index) => `photos/${index + 1}.jpg`);
 const DESCRIPTIONS = [
   'На море',
   'На пляже',
@@ -56,6 +54,9 @@ const NAMES = [
 ];
 const SIMILAR_DESCRIPTION_COUNT = 25;
 
+const id = [...Array(25)].map((item, index) => index + 1);
+const urls = [...Array(25)].map((item, index) => `photos/${index + 1}.jpg`);
+
 const comments = [{
   id: getRandomInteger(1, 200),
   avatar: `img/avatar-${  getRandomInteger(1, 6)  }.svg`,
@@ -64,14 +65,14 @@ const comments = [{
 }];
 
 const generatePhotoDescription = () => ({
-  id: pickItem(ID),
-  url: pickItem(URL),
+  id: pickItem(id),
+  url: pickItem(urls),
   description: pickItem(DESCRIPTIONS),
   likes: getRandomInteger(15, 200),
   comments,
 });
 
 // eslint-disable-next-line no-unused-vars
-const similarDesctiprions = Array.from({length: SIMILAR_DESCRIPTION_COUNT}, generatePhotoDescription);
+const createDescriptions = () => Array.from({length: SIMILAR_DESCRIPTION_COUNT}, generatePhotoDescription);
 
-export {similarDesctiprions};
+export {createDescriptions};
