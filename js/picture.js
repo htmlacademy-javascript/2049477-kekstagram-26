@@ -7,7 +7,6 @@ const similarDescriptions = createDescriptions();
 
 const pictureFragment = document.createDocumentFragment();
 
-
 similarDescriptions.forEach(({url, likes, comments}) => {
   const pictureElement = pictureTemplate.cloneNode(true);
   pictureElement.querySelector('.picture__img').src = url;
@@ -16,4 +15,7 @@ similarDescriptions.forEach(({url, likes, comments}) => {
   pictureFragment.appendChild(pictureElement);
 });
 userPictures.append(pictureFragment);
+
+
+export {userPictures};
 

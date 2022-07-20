@@ -59,7 +59,7 @@ const urls = [...Array(25)].map((item, index) => `photos/${index + 1}.jpg`);
 
 const comments = [{
   id: getRandomInteger(1, 200),
-  avatar: `img/avatar-${  getRandomInteger(1, 6)  }.svg`,
+  src: `img/avatar-${  getRandomInteger(1, 6)  }.svg`,
   message: MESSAGES[getRandomInteger(0, 6)],
   name: NAMES[getRandomInteger(0, 11)],
 }];
