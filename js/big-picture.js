@@ -1,4 +1,4 @@
-import {userPictures} from './picture.js';
+import { userPictures } from './picture.js';
 import { isEscapeKey, isEnterKey } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');

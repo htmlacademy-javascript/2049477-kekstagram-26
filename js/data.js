@@ -62,6 +62,12 @@ const comments = [{
   src: `img/avatar-${  getRandomInteger(1, 6)  }.svg`,
   message: MESSAGES[getRandomInteger(0, 6)],
   name: NAMES[getRandomInteger(0, 11)],
+},
+{
+  id: getRandomInteger(1, 200),
+  src: `img/avatar-${  getRandomInteger(1, 6)  }.svg`,
+  message: MESSAGES[getRandomInteger(0, 6)],
+  name: NAMES[getRandomInteger(0, 11)],
 }];
 
 const generatePhotoDescription = () => ({
@@ -75,4 +81,10 @@ const generatePhotoDescription = () => ({
 // eslint-disable-next-line no-unused-vars
 const createDescriptions = () => Array.from({length: SIMILAR_DESCRIPTION_COUNT}, generatePhotoDescription);
 
-export {createDescriptions};
+export {
+  createDescriptions,
+  DESCRIPTIONS,
+  MESSAGES,
+  NAMES,
+  urls
+};
