@@ -1,7 +1,12 @@
 import { createDescriptions } from './data.js';
+import { createPicItem } from './comments.js';
 
 const userPictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+
+const bigPictureImg = document.querySelector('.big-picture__img');
+const fullPicture = bigPictureImg.querySelector('img');
+const likesNum = document.querySelector('.likes-count');
 
 const similarDescriptions = createDescriptions();
 
@@ -12,10 +17,21 @@ similarDescriptions.forEach(({url, likes, comments}) => {
   pictureElement.querySelector('.picture__img').src = url;
   pictureElement.querySelector('.picture__likes').textContent = likes;
   pictureElement.querySelector('.picture__comments').innerHTML = comments.length;
-  pictureFragment.appendChild(pictureElement);
+  pictureFragment.append(pictureElement);
 });
 userPictures.append(pictureFragment);
 
 
-export {userPictures, similarDescriptions};
+const pictures = userPictures.querySelectorAll('.picture');
+const addPictureClickHandler = (picture) => {
+  picture.addEventListener('click', () => {
+    fullPicture.src = picture.querySelector('.picture__img').src;
+    likesNum.textContent = picture.querySelector('.picture__likes').textContent;
+    createPicItem();
+  });
+};
+for (let i = 0; i < pictures.length; i++) {
+  addPictureClickHandler(pictures[i]);
+}
+
 
