@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
 
+const MAX_COMMENT_LENGTH = 140;
 
 const reg = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
 const submitButton = document.querySelector('#upload-submit');
@@ -11,11 +12,7 @@ hashtag.type = 'text';
 hashtag.oninput = () => {
   const hashtagValidation = reg.test(hashtag.value);
 
-  if(hashtagValidation) {
-    submitButton.disabled = false;
-  } else {
-    submitButton.disabled = true;
-  }
+  submitButton.disabled = !hashtagValidation;
 };
 
 hashtag.addEventListener('keydown', (evt) => {
@@ -25,7 +22,7 @@ hashtag.addEventListener('keydown', (evt) => {
 });
 
 textDescription.oninput = () => {
-  if(textDescription.value.length > 0 && textDescription.value.length <= 140) {
+  if(textDescription.value.length <= MAX_COMMENT_LENGTH) {
     submitButton.disabled = false;
   } else {
     submitButton.disabled = true;
