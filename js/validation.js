@@ -7,6 +7,7 @@ const submitButton = document.querySelector('#upload-submit');
 const hashtag = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 
+
 hashtag.type = 'text';
 
 hashtag.oninput = () => {
@@ -28,10 +29,9 @@ textDescription.oninput = () => {
     submitButton.disabled = true;
   }
 };
+
 textDescription.addEventListener('keydown', (evt) => {
   if(isEscapeKey(evt)) {
     evt.stopPropagation();
   }
 });
-
-
