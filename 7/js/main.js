@@ -6,5 +6,6 @@ import './comments.js';
 import './form.js';
 import './validation.js';
 import './scale.js';
+import './pristine.js';
 
 
