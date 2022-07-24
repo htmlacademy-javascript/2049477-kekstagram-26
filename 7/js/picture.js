@@ -23,15 +23,13 @@ userPictures.append(pictureFragment);
 
 
 const pictures = userPictures.querySelectorAll('.picture');
-const addPictureClickHandler = (picture) => {
+
+pictures.forEach((picture) => {
   picture.addEventListener('click', () => {
     fullPicture.src = picture.querySelector('.picture__img').src;
     likesNum.textContent = picture.querySelector('.picture__likes').textContent;
     createPicItem();
   });
-};
-for (let i = 0; i < pictures.length; i++) {
-  addPictureClickHandler(pictures[i]);
-}
+});
 
 
