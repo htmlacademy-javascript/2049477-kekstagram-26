@@ -2,10 +2,7 @@ import { isEscapeKey, isEnterKey } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureCancel = document.querySelector('.big-picture__cancel');
-const commentCount = document.querySelector('.social__comment-count');
-const commentsLoader = document.querySelector('.comments-loader');
 const thumbnails = document.querySelectorAll('.picture');
-
 
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -17,8 +14,6 @@ const onPopupEscKeydown = (evt) => {
 function openPicture() {
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
-  commentCount.classList.add('hidden');
-  commentsLoader.classList.add('hidden');
 
   document.addEventListener('keydown', onPopupEscKeydown);
 }
