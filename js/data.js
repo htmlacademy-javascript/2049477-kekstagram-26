@@ -78,7 +78,6 @@ const generatePhotoDescription = () => ({
   comments,
 });
 
-// eslint-disable-next-line no-unused-vars
 const createDescriptions = () => Array.from({length: SIMILAR_DESCRIPTION_COUNT}, generatePhotoDescription);
 
 export {

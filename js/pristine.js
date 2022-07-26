@@ -42,7 +42,7 @@ pristine.addValidator(
   'Длина комментария не более 140 символов.'
 );
 
-uploadForm.addEventListener('submit', (evt) => {
+uploadForm.addEventListener('change', (evt) => {
   evt.preventDefault();
   pristine.validate();
 });
