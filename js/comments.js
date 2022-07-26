@@ -43,25 +43,22 @@ const getCommentsCount = () => {
   commentsCount.textContent = comments.length;
 
   socialCommentCount.textContent = `Показано ${ comments.length } из 
-                        ${  commentsCount.textContent} комментариев`;
+                        ${commentsCount.textContent} комментариев`;
 
   if(comments.length > MAX_COMMENT_COUNT) {
     socialCommentCount.textContent = `Показано ${MAX_COMMENT_COUNT} из 
-                        ${  commentsCount.textContent} комментариев`;
+                        ${commentsCount.textContent} комментариев`;
 
   }
 
   commentsLoader.addEventListener('click', () => {
-    if(comments.length) {
+    if(comments.length >= 5) {
       commentsLoader.classList.add('hidden');
+    } else {
+      commentsLoader.classList.remove('hidden');
     }
   });
 };
-
-commentSubmitButton.addEventListener('click', () => {
-  createNewComment();
-  getCommentsCount();
-});
 
 commentField.oninput = () => {
   if (commentField.value.length > MAX_COMMENT_LENGTH) {
@@ -71,4 +68,13 @@ commentField.oninput = () => {
   }
 };
 
-export {createPicItem, getCommentsCount};
+commentSubmitButton.addEventListener('click', () => {
+  createNewComment();
+  getCommentsCount();
+});
+
+export {
+  createPicItem,
+  getCommentsCount,
+  createNewComment
+};

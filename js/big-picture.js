@@ -1,4 +1,5 @@
 import { isEscapeKey, isEnterKey } from './util.js';
+import { getCommentsCount } from './comments.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureCancel = document.querySelector('.big-picture__cancel');
@@ -25,9 +26,11 @@ function closePicture() {
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
 
-for (const thumbnail of thumbnails) {
+thumbnails.forEach((thumbnail) => {
   thumbnail.addEventListener('click', () => {
     openPicture();
+    getCommentsCount();
+
 
     thumbnail.addEventListener('keydown', (evt) => {
       if (isEnterKey(evt)) {
@@ -36,7 +39,7 @@ for (const thumbnail of thumbnails) {
       }
     });
   });
-}
+});
 
 bigPictureCancel.addEventListener('click', () => {
   closePicture();
