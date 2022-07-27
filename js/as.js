@@ -1,12 +1,12 @@
-const imagePreview = document.querySelector('.img-upload__preview img');
-const imageEffects = document.querySelector('.img-upload__effects');
+const imgUploadPreview = document.querySelector('.img-upload__preview img');
+const imgUploadEffects = document.querySelector('.img-upload__effects');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 const effectLevel = sliderContainer.querySelector('.effect-level__value');
-const sliderElement = sliderContainer.querySelector('.effect-level__slider');
+const slider = sliderContainer.querySelector('.effect-level__slider');
 
 let currentEffect;
 
-window.noUiSlider.create(sliderElement, {
+window.noUiSlider.create(slider, {
   range: {
     min: 0,
     max: 1,
@@ -25,7 +25,7 @@ const hideSlider = () => {
 };
 
 const resetSlider = () => {
-  sliderElement.noUiSlider.updateOptions({
+  slider.noUiSlider.updateOptions({
     range: {
       min: 0,
       max: 1,
@@ -35,10 +35,15 @@ const resetSlider = () => {
   });
 };
 
+const resetEffects = () => {
+  currentEffect = 'none';
+  resetSlider();
+};
+
 const onEffectChange = (evt) => {
-  imagePreview.classList.remove(`effects__preview--${currentEffect}`);
+  imgUploadPreview.classList.remove(`effects__preview--${currentEffect}`);
   currentEffect = evt.target.value;
-  imagePreview.classList.add(`effects__preview--${currentEffect}`);
+  imgUploadPreview.classList.add(`effects__preview--${currentEffect}`);
 
   hideSlider();
 
@@ -47,7 +52,7 @@ const onEffectChange = (evt) => {
   }
 
   if (currentEffect === 'marvin') {
-    sliderElement.noUiSlider.updateOptions({
+    slider.noUiSlider.updateOptions({
       range: {
         min: 0,
         max: 100,
@@ -58,7 +63,7 @@ const onEffectChange = (evt) => {
   }
 
   if (currentEffect === 'phobos') {
-    sliderElement.noUiSlider.updateOptions({
+    slider.noUiSlider.updateOptions({
       range: {
         min: 0,
         max: 3,
@@ -69,7 +74,7 @@ const onEffectChange = (evt) => {
   }
 
   if (currentEffect === 'heat') {
-    sliderElement.noUiSlider.updateOptions({
+    slider.noUiSlider.updateOptions({
       range: {
         min: 1,
         max: 3,
@@ -81,32 +86,41 @@ const onEffectChange = (evt) => {
 
 };
 
-sliderElement.noUiSlider.on('update', () => {
-  effectLevel.value = sliderElement.noUiSlider.get();
+slider.noUiSlider.on('update', () => {
+  effectLevel.value = slider.noUiSlider.get();
 
   if (currentEffect === 'none') {
-    imagePreview.style.filter = 'none';
+    imgUploadPreview.style.filter = 'none';
   }
 
   if (currentEffect === 'chrome') {
-    imagePreview.style.filter = `grayscale(${effectLevel.value})`;
+    imgUploadPreview.style.filter = `grayscale(${effectLevel.value})`;
   }
 
   if (currentEffect === 'sepia') {
-    imagePreview.style.filter = `sepia(${effectLevel.value})`;
+    imgUploadPreview.style.filter = `sepia(${effectLevel.value})`;
   }
 
   if (currentEffect === 'marvin') {
-    imagePreview.style.filter = `invert(${effectLevel.value}%)`;
+    imgUploadPreview.style.filter = `invert(${effectLevel.value}%)`;
   }
 
   if (currentEffect === 'phobos') {
-    imagePreview.style.filter = `blur(${effectLevel.value}px)`;
+    imgUploadPreview.style.filter = `blur(${effectLevel.value}px)`;
   }
   if (currentEffect === 'heat') {
-    imagePreview.style.filter = `brightness(${effectLevel.value})`;
+    imgUploadPreview.style.filter = `brightness(${effectLevel.value})`;
   }
 });
 
-imageEffects.addEventListener('change', onEffectChange);
+imgUploadEffects.addEventListener('change', onEffectChange);
+
+const initSlider = () => {
+  currentEffect = 'none';
+  hideSlider();
+};
+
+export { initSlider, resetEffects };
+
+
 
