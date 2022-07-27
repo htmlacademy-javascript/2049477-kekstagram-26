@@ -7,5 +7,6 @@ import './form.js';
 import './validation.js';
 import './scale.js';
 import './pristine.js';
+import './effect.js';
 
 

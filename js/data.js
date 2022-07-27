@@ -52,7 +52,7 @@ const NAMES = [
   'Петров',
   'Игнат Валерич',
 ];
-const SIMILAR_DESCRIPTION_COUNT = 26;
+const SIMILAR_DESCRIPTION_COUNT = 25;
 
 const id = [...Array(25)].map((item, index) => index + 1);
 const urls = [...Array(25)].map((item, index) => `photos/${index + 1}.jpg`);
