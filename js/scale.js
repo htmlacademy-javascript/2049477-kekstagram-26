@@ -15,17 +15,17 @@ const setScaleValue = (value) => {
   uploadImage.style.transform = `scale(${parseFloat(item/100)})`;
 };
 const reset = () => {
-  setScaleValue(100);
+  setScaleValue(MAX_VALUE);
 };
 
 reset();
 
 scaleControlSmaller.addEventListener('click', () => {
   const currentItem = getScaleValue();
-  setScaleValue(currentItem - 25);
+  setScaleValue(currentItem - MIN_VALUE);
 });
 
 scaleControlBigger.addEventListener('click', () => {
   const currentItem = getScaleValue();
-  setScaleValue(currentItem + 25);
+  setScaleValue(currentItem + MIN_VALUE);
 });
