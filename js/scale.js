@@ -1,5 +1,5 @@
-const scaleContolSmaller = document.querySelector('.scale__control--smaller');
-const scaleContolBigger = document.querySelector('.scale__control--bigger');
+const scaleControlSmaller = document.querySelector('.scale__control--smaller');
+const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
 const uploadImage = document.querySelector('.img-upload__preview img');
 
@@ -17,12 +17,12 @@ const reset = () => {
 
 reset();
 
-scaleContolSmaller.addEventListener('click', () => {
+scaleControlSmaller.addEventListener('click', () => {
   const currentItem = getScaleValue();
   setScaleValue(currentItem - 25);
 });
 
-scaleContolBigger.addEventListener('click', () => {
+scaleControlBigger.addEventListener('click', () => {
   const currentItem = getScaleValue();
   setScaleValue(currentItem + 25);
 });
