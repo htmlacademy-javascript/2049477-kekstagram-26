@@ -13,7 +13,7 @@ const socialCaption = document.querySelector('.social__caption');
 const socialPictureSvg = document.querySelector('.social__picture');
 const commentsLoader = document.querySelector('.social__comments-loader');
 
-const createPicItem = () => {
+const createAvatarItem = () => {
   socialPictureSvg.src = `img/avatar-${  getRandomInteger(1, 6)  }.svg`;
   socialPictureSvg.alt = NAMES[getRandomInteger(0, 11)];
   socialCaption.textContent = pickItem(DESCRIPTIONS);
@@ -27,6 +27,8 @@ const createNewComment = () => {
   newAvatar.classList.add('social__picture');
   newAvatar.src = `img/avatar-${  getRandomInteger(1, 6)  }.svg`;
   newAvatar.alt = NAMES[getRandomInteger(0, 11)];
+  newAvatar.width = 35;
+  newAvatar.height = 35;
   newComment.append(newAvatar);
   const newText = document.createElement('p');
   newText.classList.add('social__text');
@@ -35,6 +37,7 @@ const createNewComment = () => {
   newComment.append(newText);
 
   socialCommentsList.append(newComment);
+  return socialCommentsList;
 };
 
 const getCommentsCount = () => {
@@ -74,7 +77,7 @@ commentSubmitButton.addEventListener('click', () => {
 });
 
 export {
-  createPicItem,
+  createAvatarItem,
   getCommentsCount,
   createNewComment
 };
