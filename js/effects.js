@@ -63,39 +63,39 @@ const EFFECTS = {
     }
   },
 };
-const scaleValue = document.querySelector('.scale__control--value');
+const controlScaleValue = document.querySelector('.scale__control--value');
 const imgScaleContainer = document.querySelector('.img-upload__scale');
 const effectSlider = document.querySelector('.effect-level__slider');
 const sliderWrapper = document.querySelector('.effect-level');
 const effectValue = document.querySelector('.effect-level__value');
-const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
+const imagePreview = document.querySelector('.img-upload__preview').querySelector('img');
 const effectsList = document.querySelector('.effects__list');
 
 
 const onScaleButtonClick = (evt) => {
-  const scaleInput = Number.parseInt(scaleValue.value, 10);
+  const scaleInput = Number.parseInt(controlScaleValue.value, 10);
   let scaleCount;
-  const buttonScale = evt.target;
-  if (buttonScale.matches('.scale__control--bigger') && scaleInput < MAX_VALUE) {
+  const controlScaleButton = evt.target;
+  if (controlScaleButton.matches('.scale__control--bigger') && scaleInput < MAX_VALUE) {
     scaleCount =  scaleInput + SCALE_STEP;
-    scaleValue.value = `${scaleCount}%`;
+    controlScaleValue.value = `${scaleCount}%`;
   }
 
-  if (buttonScale.matches('.scale__control--smaller') && scaleInput > MIN_VALUE) {
+  if (controlScaleButton.matches('.scale__control--smaller') && scaleInput > MIN_VALUE) {
     scaleCount = scaleInput - SCALE_STEP;
-    scaleValue.value = `${scaleCount}%`;
+    controlScaleValue.value = `${scaleCount}%`;
   }
 
   if (scaleCount >= MAX_VALUE) {
     scaleCount = MAX_VALUE;
-    scaleValue.value = `${scaleCount}%`;
+    controlScaleValue.value = `${scaleCount}%`;
   }
 
   if (scaleCount <= MIN_VALUE) {
     scaleCount = MIN_VALUE;
-    scaleValue.value = `${scaleCount}%`;
+    controlScaleValue.value = `${scaleCount}%`;
   }
-  imgPreview.style.transform = `scale(${scaleCount / 100})`;
+  imagePreview.style.transform = `scale(${scaleCount / 100})`;
 };
 
 
@@ -124,15 +124,15 @@ const onFilterButtonChange = (evt) => {
   const evtHandler = evt.target.value;
   if (evtHandler === 'none') {
     sliderWrapper.classList.add('hidden');
-    imgPreview.style.filter = 'none';
+    imagePreview.style.filter = 'none';
   }  else {
     sliderWrapper.classList.remove('hidden');
-    imgPreview.removeAttribute('class');
-    imgPreview.classList.add(`effects__preview--${evtHandler}`);
+    imagePreview.removeAttribute('class');
+    imagePreview.classList.add(`effects__preview--${evtHandler}`);
     effectSlider.noUiSlider.updateOptions(EFFECTS[evtHandler].options);
     effectSlider.noUiSlider.on('update', () => {
       effectValue.value = effectSlider.noUiSlider.get();
-      imgPreview.style.filter = `${EFFECTS[evtHandler].filter}(${effectValue.value}${EFFECTS[evtHandler].units})`;
+      imagePreview.style.filter = `${EFFECTS[evtHandler].filter}(${effectValue.value}${EFFECTS[evtHandler].units})`;
     });
   }
 };

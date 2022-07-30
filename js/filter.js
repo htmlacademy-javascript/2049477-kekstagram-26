@@ -2,7 +2,7 @@ import { getRandomElements, debounce } from './util.js';
 import { renderPictures } from './pictures.js';
 
 const RANDOM_QUANTITY = 10;
-const imgFilters = document.querySelector('.img-filters');
+const imageFilters = document.querySelector('.img-filters');
 const defaultFilterButton = document.querySelector('#filter-default');
 const randomFilterButton = document.querySelector('#filter-random');
 const discussedFilterButton = document.querySelector('#filter-discussed');
@@ -44,7 +44,7 @@ const renderPicturesFilter = (pictures) => {
 };
 
 const showFilteredPictures = (pictures) => {
-  imgFilters.classList.remove('img-filters--inactive');
+  imageFilters.classList.remove('img-filters--inactive');
   defaultFilterButton.addEventListener('click', debounce((evt) => {
     removeActiveClass();
     if (evt.target === defaultFilterButton) {

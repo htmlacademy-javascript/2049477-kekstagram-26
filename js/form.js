@@ -122,11 +122,30 @@ const pristine = new Pristine(uploadForm, {
   errorTextClass: 'text__error'
 });
 
-pristine.addValidator(commentsField, checkCommentsLength, `Не более ${MAX_STRING_LENGTH} символов`);
-pristine.addValidator(hashtagsText, getUniqueHashtags, 'Хэштеги не должны повторяться!');
-pristine.addValidator(hashtagsText, checkHashtagsQuantity, 'Не более 5 хэштегов');
-pristine.addValidator(hashtagsText, getHashtagsToLowerCase, '');
-pristine.addValidator(hashtagsText, checkHashtagsSymbols, 'Хэштег должен начинатьтся со знака # и содержать только буквы и цифры, не более 20 символов');
+pristine.addValidator(
+  commentsField, checkCommentsLength,
+  `Не более ${MAX_STRING_LENGTH} символов`
+);
+pristine.addValidator(
+  hashtagsText,
+  getUniqueHashtags,
+  'Хэштеги не должны повторяться!'
+);
+pristine.addValidator(
+  hashtagsText,
+  checkHashtagsQuantity,
+  'Не более 5 хэштегов'
+);
+pristine.addValidator(
+  hashtagsText,
+  getHashtagsToLowerCase,
+  ''
+);
+pristine.addValidator(
+  hashtagsText,
+  checkHashtagsSymbols,
+  'Хэштег должен начинатьтся со знака # и содержать только буквы и цифры, не более 20 символов'
+);
 
 const submitForm = (onSuccess) => {
   uploadForm.addEventListener('submit', (evt) => {
