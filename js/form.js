@@ -7,12 +7,12 @@ const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png', 'heic'];
 const MAX_STRING_LENGTH = 140;
 const HASHTAGS_QUANTITY = 5;
 
-const imgUploadField = document.querySelector('#upload-file');
-const imgOverlay = document.querySelector('.img-upload__overlay');
+const imageUploadField = document.querySelector('#upload-file');
+const imageOverlay = document.querySelector('.img-upload__overlay');
 const uploadForm = document.querySelector('.img-upload__form');
 const buttonCancel = document.querySelector('.img-upload__cancel');
 const buttonSubmit = document.querySelector('.img-upload__submit');
-const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
+const imagePreview = document.querySelector('.img-upload__preview').querySelector('img');
 const body = document.querySelector('body');
 const hashtagsText = document.querySelector('.text__hashtags');
 const commentsField = document.querySelector('.text__description');
@@ -25,7 +25,7 @@ const uploadImage = () => {
 
   const imageMatching = FILE_TYPES.some((it) => imageName.endsWith(it));
   if (imageMatching) {
-    imgPreview.src = URL.createObjectURL(image);
+    imagePreview.src = URL.createObjectURL(image);
   }
 };
 
@@ -65,14 +65,14 @@ const onPopupCloseButtonClick = () => {
 };
 
 function closeUploadPopup  () {
-  imgOverlay.classList.add('hidden');
+  imageOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onPopupEscKeydown);
   document.removeEventListener('click', onPopupCloseButtonClick);
   imgScaleContainer.removeEventListener('click', onScaleButtonClick);
   effectsList.removeEventListener('change', onFilterButtonChange);
-  imgPreview.removeAttribute('class');
-  imgPreview.removeAttribute('style');
+  imagePreview.removeAttribute('class');
+  imagePreview.removeAttribute('style');
   uploadForm.reset();
 }
 
@@ -102,7 +102,7 @@ const enableSubmitButton = () => {
 };
 
 function showUploadPopup (evt) {
-  imgPreview.classList.remove('hidden');
+  imageOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   buttonCancel.addEventListener('click', onPopupCloseButtonClick);
   document.addEventListener('keydown',onPopupEscKeydown);
@@ -171,12 +171,12 @@ const submitForm = (onSuccess) => {
   });
 };
 
-imgUploadField.addEventListener('change', showUploadPopup);
+imageUploadField.addEventListener('change', showUploadPopup);
 
 export {
   closeUploadPopup,
   showUploadPopup,
-  imgUploadField,
+  imageUploadField,
   submitForm,
   body
 };
