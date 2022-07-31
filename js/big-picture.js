@@ -45,11 +45,11 @@ const openBigPicture = (picture) => {
     body.classList.remove('modal-open');
     document.removeEventListener('keydown', onPopupEscKeydown);
     closePictureButton.removeEventListener('click', onPopupCloseButtonClick);
-    commentsLoader.removeEventListener('click', commentsLoaderOnClick);
+    commentsLoader.removeEventListener('click', loadComments);
     counter = 0;
   }
 
-  function commentsLoaderOnClick() {
+  function loadComments() {
     counter += MAX_COMMENTS_LENGTH;
     createCommentsSlice();
   }
@@ -74,7 +74,7 @@ const openBigPicture = (picture) => {
   bigPicture.querySelector('.social__caption').textContent = picture.description;
 
   createCommentsSlice();
-  commentsLoader.addEventListener('click', commentsLoaderOnClick);
+  commentsLoader.addEventListener('click', loadComments);
 
   closePictureButton.addEventListener('click', onPopupCloseButtonClick);
   document.addEventListener('keydown', onPopupEscKeydown);
