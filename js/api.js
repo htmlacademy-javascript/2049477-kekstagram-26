@@ -2,6 +2,7 @@
 import { showAlert } from './util.js';
 
 const SERVER_HOST = 'https://26.javascript.pages.academy/kekstagram/data';
+const ALERT_MESSAGE = 'Не удалось загрузить изображения с сервера';
 const FAIL_MESSAGE = 'Не удалось отправить форму. Попробуйте ещё раз';
 
 const getData = (onSuccess) => {
@@ -12,7 +13,7 @@ const getData = (onSuccess) => {
       onSuccess(pictures);
     })
     .catch(() => {
-      showAlert('Не удалось загрузить изображения с сервера');
+      showAlert(ALERT_MESSAGE);
     });
 };
 
