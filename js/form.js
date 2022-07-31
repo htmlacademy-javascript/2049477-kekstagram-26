@@ -3,7 +3,7 @@ import { showMessageSuccess, showMessageError } from './messages.js';
 import { isEscapeKey } from './util.js';
 import { sendData } from './api.js';
 
-const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png', 'heic'];
+const FILES_TYPES = ['gif', 'jpg', 'jpeg', 'png', 'heic'];
 const MAX_STRING_LENGTH = 140;
 const HASHTAGS_QUANTITY = 5;
 const HASHTAG_REPEAT_ALERT = 'Хэштеги не должны повторяться!';
@@ -27,7 +27,7 @@ const uploadImage = () => {
   const image = imageUploadInput.files[0];
   const imageName = image.name.toLowerCase();
 
-  const imageMatching = FILE_TYPES.some((it) => imageName.endsWith(it));
+  const imageMatching = FILES_TYPES.some((it) => imageName.endsWith(it));
   if (imageMatching) {
     imagePreview.src = URL.createObjectURL(image);
   }
