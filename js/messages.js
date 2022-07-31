@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import { body, showUploadPopup } from './form.js';
+import { body, showPopupOnChange} from './form.js';
 
 const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
@@ -40,19 +40,19 @@ const showMessageError = () => {
   document.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       sectionError.remove();
-      showUploadPopup();
+      showPopupOnChange();
     }
   });
   sectionError.addEventListener(('click'), (evt) => {
     if (evt.target === buttonError) {
       sectionError.remove();
-      showUploadPopup();
+      showPopupOnChange();
     }
   });
   sectionError.addEventListener(('click'), (evt) => {
     if (evt.target === errorInner) {
       sectionError.remove();
-      showUploadPopup();
+      showPopupOnChange();
     }
   });
 };
