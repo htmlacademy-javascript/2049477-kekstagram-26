@@ -8,7 +8,7 @@ const MAX_STRING_LENGTH = 140;
 const HASHTAGS_QUANTITY = 5;
 const HASHTAG_REPEAT_ALERT = 'Хэштеги не должны повторяться!';
 const HASHTAG_CONTENT_ALERT = 'Хэштег должен начинатьтся со знака # и содержать только буквы и цифры, не более 20 символов';
-const NUMBER_HASHTAGS = 'Не более 5 хэштегов';
+const NUMBER_HASHTAGS_ALERT = 'Не более 5 хэштегов';
 const COMMENT_LENGTH_ALERT = `Длина комментария не более ${MAX_STRING_LENGTH} символов`;
 
 const imageUploadField = document.querySelector('#upload-file');
@@ -138,7 +138,7 @@ pristine.addValidator(
 pristine.addValidator(
   hashtagsText,
   checkHashtagsQuantity,
-  NUMBER_HASHTAGS
+  NUMBER_HASHTAGS_ALERT
 );
 pristine.addValidator(
   hashtagsText,
