@@ -6,6 +6,10 @@ import { sendData } from './api.js';
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png', 'heic'];
 const MAX_STRING_LENGTH = 140;
 const HASHTAGS_QUANTITY = 5;
+const HASHTAG_REPEAT_ALERT = 'Хэштеги не должны повторяться!';
+const HASHTAG_CONTENT_ALERT = 'Хэштег должен начинатьтся со знака # и содержать только буквы и цифры, не более 20 символов';
+const NUMBER_HASHTAGS = 'Не более 5 хэштегов';
+const COMMENT_LENGTH_ALERT = `Длина комментария не более ${MAX_STRING_LENGTH} символов`;
 
 const imageUploadField = document.querySelector('#upload-file');
 const imageOverlay = document.querySelector('.img-upload__overlay');
@@ -124,17 +128,17 @@ const pristine = new Pristine(uploadForm, {
 
 pristine.addValidator(
   commentsField, checkCommentsLength,
-  `Не более ${MAX_STRING_LENGTH} символов`
+  COMMENT_LENGTH_ALERT
 );
 pristine.addValidator(
   hashtagsText,
   getUniqueHashtags,
-  'Хэштеги не должны повторяться!'
+  HASHTAG_REPEAT_ALERT
 );
 pristine.addValidator(
   hashtagsText,
   checkHashtagsQuantity,
-  'Не более 5 хэштегов'
+  NUMBER_HASHTAGS
 );
 pristine.addValidator(
   hashtagsText,
@@ -144,7 +148,7 @@ pristine.addValidator(
 pristine.addValidator(
   hashtagsText,
   checkHashtagsSymbols,
-  'Хэштег должен начинатьтся со знака # и содержать только буквы и цифры, не более 20 символов'
+  HASHTAG_CONTENT_ALERT
 );
 
 const submitForm = (onSuccess) => {
