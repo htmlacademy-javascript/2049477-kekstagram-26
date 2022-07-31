@@ -39,8 +39,8 @@ const getHashtags = (string) => string.split(' ').filter((item) => item !== '');
 
 const checkHashtagsQuantity = (string) => getHashtags(string).length <= HASHTAGS_QUANTITY;
 
-const validateUniqueHashtags = (value) => {
-  const hashtags = value.toLowerCase().trim().split(' ');
+const validateUniqueHashtags = (string) => {
+  const hashtags = string.toLowerCase().trim().split(' ');
   return hashtags.length === (new Set(hashtags)).size;
 };
 
