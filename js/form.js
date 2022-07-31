@@ -40,8 +40,8 @@ const getHashtags = (string) => string.split(' ').filter((item) => item !== '');
 const checkHashtagsQuantity = (string) => getHashtags(string).length <= HASHTAGS_QUANTITY;
 
 const validateUniqueHashtags = (value) => {
-  const hashTags = value.toLowerCase().trim().split(' ');
-  return hashTags.length === (new Set(hashTags)).size;
+  const hashtags = value.toLowerCase().trim().split(' ');
+  return hashtags.length === (new Set(hashtags)).size;
 };
 
 const checkHashtagsSymbols = (string) => {
