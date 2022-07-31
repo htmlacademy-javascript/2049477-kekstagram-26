@@ -1,12 +1,12 @@
 
 import { showAlert } from './util.js';
 
-const SERVER_HOST = 'https://26.javascript.pages.academy/kekstagram/data';
+const SERVER_ADDRESS = 'https://26.javascript.pages.academy/kekstagram/data';
 const ALERT_MESSAGE = 'Не удалось загрузить изображения с сервера';
 const FAIL_MESSAGE = 'Не удалось отправить форму. Попробуйте ещё раз';
 
 const getData = (onSuccess) => {
-  fetch(SERVER_HOST)
+  fetch(SERVER_ADDRESS)
     .then((response) =>
       response.json())
     .then((pictures) => {
@@ -19,7 +19,7 @@ const getData = (onSuccess) => {
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(
-    SERVER_HOST,
+    SERVER_ADDRESS,
     {
       method: 'POST',
       body,
