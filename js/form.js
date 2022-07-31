@@ -7,7 +7,7 @@ const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png', 'heic'];
 const MAX_STRING_LENGTH = 140;
 const HASHTAGS_QUANTITY = 5;
 const HASHTAG_REPEAT_ALERT = 'Хэштеги не должны повторяться!';
-const HASHTAG_CONTENT_ALERT = 'Хэштег должен начинатьтся со знака # и содержать только буквы и цифры, не более 20 символов';
+const HASHTAG_CONTENT_ALERT = 'Хэштег должен начинатьтся со знака # и содержать только буквы и цифры, не более 20 символов. Хэштеги отделяются пробелами';
 const NUMBER_HASHTAGS_ALERT = 'Не более 5 хэштегов';
 const COMMENT_LENGTH_ALERT = `Длина комментария не более ${MAX_STRING_LENGTH} символов`;
 
@@ -37,25 +37,17 @@ const checkCommentsLength = (value) => value.length <= MAX_STRING_LENGTH;
 
 const getHashtags = (string) => string.split(' ').filter((item) => item !== '');
 
-const getUniqueHashtags = (string) => {
-  const hashtags = getHashtags(string);
-  const uniqueSet = new Set(hashtags);
-  return hashtags.length === uniqueSet.size;
-};
-
 const checkHashtagsQuantity = (string) => getHashtags(string).length <= HASHTAGS_QUANTITY;
 
-const getHashtagsToLowerCase = (string) => {
-  const hashtags = getHashtags(string);
-  return hashtags.map((element) => element.toLowerCase());
+const validateUniqueHashtags = (value) => {
+  const hashTags = value.toLowerCase().trim().split(' ');
+  return hashTags.length === (new Set(hashTags)).size;
 };
-
 
 const checkHashtagsSymbols = (string) => {
   const hashtags = getHashtags(string);
   return hashtags.every((element) => reg.test(element));
 };
-
 
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -105,7 +97,7 @@ const enableSubmitButton = () => {
   buttonSubmit.textContent = 'Опубликовать';
 };
 
-function showUploadPopup (evt) {
+function showPopupOnChange (evt) {
   imageOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   buttonCancel.addEventListener('click', onPopupCloseButtonClick);
@@ -127,23 +119,19 @@ const pristine = new Pristine(uploadForm, {
 });
 
 pristine.addValidator(
-  commentsField, checkCommentsLength,
+  commentsField,
+  checkCommentsLength,
   COMMENT_LENGTH_ALERT
 );
 pristine.addValidator(
   hashtagsText,
-  getUniqueHashtags,
+  validateUniqueHashtags,
   HASHTAG_REPEAT_ALERT
 );
 pristine.addValidator(
   hashtagsText,
   checkHashtagsQuantity,
   NUMBER_HASHTAGS_ALERT
-);
-pristine.addValidator(
-  hashtagsText,
-  getHashtagsToLowerCase,
-  ''
 );
 pristine.addValidator(
   hashtagsText,
@@ -175,12 +163,13 @@ const submitForm = (onSuccess) => {
   });
 };
 
-imageUploadField.addEventListener('change', showUploadPopup);
+imageUploadField.addEventListener('change', showPopupOnChange);
 
 export {
   closeUploadPopup,
-  showUploadPopup,
+  showPopupOnChange,
   imageUploadField,
+  uploadImage,
   submitForm,
   body
 };
