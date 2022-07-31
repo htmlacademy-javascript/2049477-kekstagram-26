@@ -63,6 +63,7 @@ const EFFECTS = {
     }
   },
 };
+
 const controlScaleValue = document.querySelector('.scale__control--value');
 const imgScaleContainer = document.querySelector('.img-upload__scale');
 const effectSlider = document.querySelector('.effect-level__slider');

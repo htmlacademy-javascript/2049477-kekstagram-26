@@ -102,7 +102,7 @@ const enableSubmitButton = () => {
 };
 
 function showUploadPopup (evt) {
-  imgOverlay.classList.remove('hidden');
+  imgPreview.classList.remove('hidden');
   body.classList.add('modal-open');
   buttonCancel.addEventListener('click', onPopupCloseButtonClick);
   document.addEventListener('keydown',onPopupEscKeydown);
